@@ -1,17 +1,28 @@
 import React from 'react'
+import Stateless from './Stateless';
 
 interface HelloWorldProps {
     name: string;
 }
 
-export class HelloWorld extends React.Component<HelloWorldProps> {
+interface HelloWorldState {
+    componentState: number;
+}
 
-    public render() {
+export class HelloWorld extends React.Component<HelloWorldProps, HelloWorldState> {
+    constructor(props: HelloWorldProps) {
+        super(props);
+        this.state = {
+            componentState: 100,
+        };
+    }
+    render() {
         return (
             <div>
                 <h1>Basic Application</h1>
                 <h3>Hello  {this.props.name}</h3>
                 <hr/>
+                <Stateless god="Odin" sons={4} />
             </div>
         );
     }
