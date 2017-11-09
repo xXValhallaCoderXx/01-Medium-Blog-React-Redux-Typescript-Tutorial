@@ -7,7 +7,7 @@
   "author": "Renate Gouveia",
   "license": "MIT",
   "scripts": {
-    "start": "webpack-dev-server",
+    "start": "webpack-dev-server"
   },
   "dependencies": {
     "react": "^16.0.0",
