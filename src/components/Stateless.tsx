@@ -2,14 +2,14 @@ import React from "react";
 
 // DEFINE THE PROPS TYPES
 export interface StatelessPropTypes {
-    god: string;
-    sons: number;
+    norseGod: string;
+    numberOfSons: number;
 }
 
-const Message = ({ god, sons }: StatelessPropTypes) => (
+const Message = ({ norseGod, numberOfSons }: StatelessPropTypes) => (
     <div>
-        <h4>{god} The Wanderer</h4>
-        <div>Has {sons} Sons</div>
+        <h4>{norseGod} The Wanderer</h4>
+        <div>Has {numberOfSons} Sons</div>
     </div>
 );
 

@@ -22,7 +22,7 @@ export class HelloWorld extends React.Component<HelloWorldProps, HelloWorldState
                 <h1>Basic Application</h1>
                 <h3>Hello  {this.props.name}</h3>
                 <hr/>
-                <Stateless god="Odin" sons={4} />
+                <Stateless norseGod="Odin" numberOfSons={4} />
             </div>
         );
     }
