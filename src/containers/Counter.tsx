@@ -1,37 +1,26 @@
-import React from 'react'
-import ErrorMessage from './Error';
+import React, { Component } from 'react';
+import CounterView from '../components/CounterView';
+import ErrorMessage from '../components/Error';
 
-interface CounterState {
+export interface CounterContainerState {
     value: number;
     error: boolean;
 }
 
-export class Counter extends React.Component<{},CounterState> {
-    constructor(props: any) {
+const HOC = (ComposedComponent: any) => class extends Component<{}, CounterContainerState> {
+    constructor(props: any){
         super(props);
         this.state = {
             value: 0,
-            error: false,
-        };
+            error: false
+        }
     }
     render() {
-        const { value } = this.state;
-        return (
-            <div>
-                <h1>Beer Drank: {value}</h1>
-                {this.handleDisplayError()}
-                <hr/>
-                <div className="basic-padding">
-                    <label>Increase: </label>
-                    <button onClick={() => this.handleIncrease()}>+</button>
-                </div>
-                <br/>
-                <div className="basic-padding">
-                    <label>Decrease: </label>
-                    <button onClick={() => this.handleDecrease()}>-</button>
-                </div>
-            </div>
-        );
+        return <ComposedComponent 
+            {...this.state}
+            handleDisplayError={() => this.handleDisplayError()}
+            handleIncrease={() => this.handleIncrease()}
+            handleDecrease={() => this.handleDecrease()} />;
     }
 
     handleIncrease(){
@@ -64,7 +53,8 @@ export class Counter extends React.Component<{},CounterState> {
         if(error){
             return <ErrorMessage />
         };
-        
         return null;
     }
 };
+
+export default HOC(CounterView);
