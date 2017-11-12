@@ -1,9 +1,6 @@
 import React, { Component } from 'react';
 import CounterView from '../components/CounterView';
 import ErrorMessage from '../components/Error';
-import { Valkyrie, Aesir, Einherjar } from '../models';
-
-export type ValhallaBeing = Valkyrie | Aesir | Einherjar;
 
 export interface CounterContainerState {
     value: number;
@@ -11,8 +8,8 @@ export interface CounterContainerState {
 }
 
 const HOC = (ComposedComponent: any) => class extends Component<{}, CounterContainerState> {
-    constructor(props: any){
-        super(props);
+    constructor(){
+        super();
         this.state = {
             value: 0,
             error: false,
@@ -21,7 +18,6 @@ const HOC = (ComposedComponent: any) => class extends Component<{}, CounterConta
     render() {
         return <ComposedComponent 
             {...this.state}
-            selectedBeing={(x: any) => this.selectedBeing(x)}
             handleDisplayError={() => this.handleDisplayError()}
             handleIncrease={() => this.handleIncrease()}
             handleDecrease={() => this.handleDecrease()} />;
@@ -58,21 +54,6 @@ const HOC = (ComposedComponent: any) => class extends Component<{}, CounterConta
             return <ErrorMessage />
         };
         return null;
-    }
-
-
-    selectedBeing(type: ValhallaBeing){
-        switch(type.entity){
-            case 'valkyrie':
-                console.log('YOU HAVE SELECTED THE VALKYRIE')
-                return;
-            case 'aesir':
-            console.log('YOU HAVE SELECTED THE AESIR')
-                return;
-            case 'einherjar':
-            console.log('YOU HAVE SELECTED THE EINHERJAR')
-                return;
-        }
     }
 };
 

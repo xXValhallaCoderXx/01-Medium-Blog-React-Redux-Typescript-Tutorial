@@ -1,8 +1,8 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import HOC from './containers/Counter';
+import MainView from './views/Main';
 import './assets/styles/main.css';
 
 ReactDOM.render(
-  <HOC />, document.getElementById("render-app")
+  <MainView />, document.getElementById("render-app")
 );
