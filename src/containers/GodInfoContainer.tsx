@@ -5,14 +5,15 @@ import { sampleAesir, sampleEinherjar, sampleValk } from '../modelData';
 
 export type ValhallaBeing = Valkyrie | Aesir | Einherjar;
 
+
 export interface GodInfoContainerState {
     selectedGod: object;
     godsList: NorseGods[];
 }
 
-const HOC = (ComposedComponent: /*typeof React.Component*/ any) => class extends Component<{}, GodInfoContainerState> {
-    constructor(props: any){
-        super(props);
+const HOC = (ComposedComponent: any) => class extends Component<{}, GodInfoContainerState> {
+    constructor(){
+        super();
         this.state = {
             selectedGod: {},
             godsList: [sampleAesir, sampleEinherjar, sampleValk]
@@ -25,7 +26,7 @@ const HOC = (ComposedComponent: /*typeof React.Component*/ any) => class extends
     }
 
     handleOnDropDownChange(e: string){
-        var value: any = this.state.godsList.filter(item => {
+        const value: any = this.state.godsList.filter(item => {
             return item.entity == e
           })
 

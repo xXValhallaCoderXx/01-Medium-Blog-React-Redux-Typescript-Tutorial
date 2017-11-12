@@ -9,11 +9,11 @@ interface GodInfoViewProps {
 
 type ComponentProps = GodInfoViewProps
 
-const GodInfoView = (props: ComponentProps) => {
+const GodInfoView = (props: ComponentProps): JSX.Element => {
     return (
         <div>
             <h3>Choose Thy Being Of Valhalla</h3>
-            <select onChange={(e) => props.handleOnDropDownChange(e.currentTarget.value)}>
+            <select onChange={(e) => props.handleOnDropDownChange(e.target.value)}>
             {props.godsList.map((key) => { 
                 return <option key={key.id}>{(key.entity)}</option>
             })}

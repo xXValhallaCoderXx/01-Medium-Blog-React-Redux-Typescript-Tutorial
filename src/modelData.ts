@@ -5,21 +5,22 @@ import { Valkyrie, Aesir, Einherjar } from './models';
 
 export const sampleValk: Valkyrie = {
     id: 1,
-    name: "Example1",
+    name: "Herja",
     entity: "valkyrie",
     saved: 100,
+    optional: "This is not needed"
 };
 
 export const sampleAesir: Aesir = {
     id: 2,
-    name: "Example1",
+    name: "Freyr",
     entity: "aesir",
     protected: 100,
 };
 
 export const sampleEinherjar: Einherjar = {
     id: 3,
-    name: "Example1",
+    name: "The Fallen Ones",
     entity: "einherjar",
     slain: 100
 };

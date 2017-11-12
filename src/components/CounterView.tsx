@@ -9,7 +9,7 @@ interface CounterViewProps {
 
 type ComponentProps = CounterContainerState & CounterViewProps
 
-const CounterView = (props: ComponentProps) => {
+const CounterView = (props: ComponentProps): JSX.Element => {
     return (
         <div>
             <h1>Beer Drank: {props.value}</h1>
