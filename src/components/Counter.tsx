@@ -7,14 +7,14 @@ interface CounterState {
 }
 
 export class Counter extends React.Component<{},CounterState> {
-    constructor(props: any) {
-        super(props);
+    constructor() {
+        super();
         this.state = {
             value: 0,
             error: false,
         };
     }
-    render() {
+    render(): JSX.Element {
         const { value } = this.state;
         return (
             <div>
@@ -40,7 +40,7 @@ export class Counter extends React.Component<{},CounterState> {
         this.setState({ 
             value: value + 1,
             error: false,
-        })
+        });
     };
 
     handleDecrease(){
