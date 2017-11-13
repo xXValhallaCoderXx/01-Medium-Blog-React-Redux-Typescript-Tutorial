@@ -7,7 +7,7 @@ export interface CounterContainerState {
     error: boolean;
 }
 
-const HOC = (ComposedComponent: any) => class extends Component<{}, CounterContainerState> {
+const CounterContainer = (ComposedComponent: any) => class extends Component<{}, CounterContainerState> {
     constructor(){
         super();
         this.state = {
@@ -57,4 +57,4 @@ const HOC = (ComposedComponent: any) => class extends Component<{}, CounterConta
     }
 };
 
-export default HOC(CounterView);
+export default CounterContainer(CounterView);

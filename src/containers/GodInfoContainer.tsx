@@ -11,7 +11,7 @@ export interface GodInfoContainerState {
     godsList: NorseGods[];
 }
 
-const HOC = (ComposedComponent: any) => class extends Component<{}, GodInfoContainerState> {
+const GodInfoContainer = (ComposedComponent: any) => class extends Component<{}, GodInfoContainerState> {
     constructor(){
         super();
         this.state = {
@@ -49,4 +49,4 @@ const HOC = (ComposedComponent: any) => class extends Component<{}, GodInfoConta
     }
 };
 
-export default HOC(GodInfoView);
+export default GodInfoContainer(GodInfoView);
