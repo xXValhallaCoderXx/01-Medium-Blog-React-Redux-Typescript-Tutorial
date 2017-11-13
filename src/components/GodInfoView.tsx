@@ -3,7 +3,6 @@ import { NorseGods } from '../models';
 
 interface GodInfoViewProps {
     handleOnDropDownChange: (e: string) => void;
-    test: object;
     godsList: NorseGods[];
 }
 

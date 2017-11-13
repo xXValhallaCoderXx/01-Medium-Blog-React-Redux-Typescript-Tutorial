@@ -11,31 +11,32 @@ export interface GodInfoContainerState {
     godsList: NorseGods[];
 }
 
-const GodInfoContainer = (ComposedComponent: any) => class extends Component<{}, GodInfoContainerState> {
-    constructor(){
+
+class GodInfoContainer extends React.Component<{}, GodInfoContainerState> {
+    public constructor() {
         super();
         this.state = {
             selectedGod: {},
             godsList: [sampleAesir, sampleEinherjar, sampleValk]
         }
     }
-    render() {
-        return <ComposedComponent 
+    public render() {
+        return <GodInfoView
             {...this.state}
-            handleOnDropDownChange={(e: string) => this.handleOnDropDownChange(e)}/>;
+            handleOnDropDownChange={(e: string) => this.handleOnDropDownChange(e)} />;;
     }
 
-    handleOnDropDownChange(e: string){
+    handleOnDropDownChange(e: string) {
         const value: any = this.state.godsList.filter(item => {
             return item.entity == e
-          })
+        })
 
         this.setState({ selectedGod: value[0] });
         this.selectedBeing(value[0]);
     }
 
-    selectedBeing(norseGod: ValhallaBeing){
-        switch(norseGod.entity){
+    selectedBeing(norseGod: ValhallaBeing) {
+        switch (norseGod.entity) {
             case 'valkyrie':
                 console.log('YOU HAVE SELECTED THE VALKYRIE', norseGod)
                 break;
@@ -49,4 +50,4 @@ const GodInfoContainer = (ComposedComponent: any) => class extends Component<{},
     }
 };
 
-export default GodInfoContainer(GodInfoView);
+export default GodInfoContainer;
