@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import GodInfoView from '../components/GodInfoView'
+import CreateGodView from '../components/CreateGodView'
 import { Valkyrie, Aesir, Einherjar, NorseGods } from '../models';
-import { sampleAesir, sampleEinherjar, sampleValk } from '../modelData';
+import { listOfNorseGods } from '../data/sampleData';
 
 export type ValhallaBeing = Valkyrie | Aesir | Einherjar;
 
@@ -11,31 +11,32 @@ export interface GodInfoContainerState {
     godsList: NorseGods[];
 }
 
-const HOC = (ComposedComponent: any) => class extends Component<{}, GodInfoContainerState> {
-    constructor(){
+
+class GodInfoContainer extends React.Component<{}, GodInfoContainerState> {
+    constructor() {
         super();
         this.state = {
             selectedGod: {},
-            godsList: [sampleAesir, sampleEinherjar, sampleValk]
+            godsList: listOfNorseGods
         }
     }
-    render() {
-        return <ComposedComponent 
+    render(): JSX.Element {
+        return <CreateGodView
             {...this.state}
-            handleOnDropDownChange={(e: string) => this.handleOnDropDownChange(e)}/>;
+            handleOnDropDownChange={(e: string) => this.handleOnDropDownChange(e)} />;;
     }
 
-    handleOnDropDownChange(e: string){
+    handleOnDropDownChange(e: string) {
         const value: any = this.state.godsList.filter(item => {
             return item.entity == e
-          })
+        })
 
         this.setState({ selectedGod: value[0] });
         this.selectedBeing(value[0]);
     }
 
-    selectedBeing(norseGod: ValhallaBeing){
-        switch(norseGod.entity){
+    selectedBeing(norseGod: ValhallaBeing) {
+        switch (norseGod.entity) {
             case 'valkyrie':
                 console.log('YOU HAVE SELECTED THE VALKYRIE', norseGod)
                 break;
@@ -49,4 +50,4 @@ const HOC = (ComposedComponent: any) => class extends Component<{}, GodInfoConta
     }
 };
 
-export default HOC(GodInfoView);
+export default GodInfoContainer;

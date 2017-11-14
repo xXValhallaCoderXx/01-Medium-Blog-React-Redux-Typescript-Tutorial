@@ -1,4 +1,4 @@
-import { Valkyrie, Aesir, Einherjar } from './models';
+import { Valkyrie, Aesir, Einherjar } from '../models';
 
 
 // Note How they all have the properties of 'NorseGodType' interface
@@ -24,3 +24,9 @@ export const sampleEinherjar: Einherjar = {
     entity: "einherjar",
     slain: 100
 };
+
+export const listOfNorseGods = [
+    sampleValk,
+    sampleAesir,
+    sampleEinherjar
+]

@@ -1,8 +1,12 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import MainView from './views/Main';
+import CounterContainer from './containers/CounterContainer';
+import SelectedGodContainer from './containers/SelectGodContainer';
 import './assets/styles/main.css';
 
 ReactDOM.render(
-  <MainView />, document.getElementById("render-app")
+  <div>
+    <CounterContainer />
+    <SelectedGodContainer />
+  </div>, document.getElementById("render-app")
 );

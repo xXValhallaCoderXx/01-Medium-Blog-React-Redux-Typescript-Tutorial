@@ -1,25 +1,28 @@
 import React from "react";
-import { NorseGods } from '../models';
+import { CounterContainerState } from '../containers/CounterContainer';
 
-interface GodInfoViewProps {
-    handleOnDropDownChange: (e: string) => void;
-    test: object;
-    godsList: NorseGods[];
+interface GodInfoProps {
+    selectedGod: {
+        [key: string]: any;
+    };
 }
 
-type ComponentProps = GodInfoViewProps
+type ComponentProps = GodInfoProps;
 
 const GodInfoView = (props: ComponentProps): JSX.Element => {
+    const { selectedGod } = props;
+
+    function renderGodInfo(){
+        return Object.keys(selectedGod).map(function(key, index) {
+            return <div key={index}><label>{key}: </label>{selectedGod[key]}</div>
+         });
+    }
+
     return (
         <div>
-            <h3>Choose Thy Being Of Valhalla</h3>
-            <select onChange={(e) => props.handleOnDropDownChange(e.target.value)}>
-            {props.godsList.map((key) => { 
-                return <option key={key.id}>{(key.entity)}</option>
-            })}
-            </select>
+            {renderGodInfo()}            
         </div>
-    )
+    );
 };
 
 export default GodInfoView;
