@@ -8,7 +8,7 @@ export type ValhallaBeing = Valkyrie | Aesir | Einherjar;
 
 export interface GodInfoContainerState {
     godsList: ['valkyrie', 'einjerhar', 'aesir'];
-    godType: ValhallaBeing | any;
+    godType: Valkyrie | Aesir | Einherjar;
 }
 
 
@@ -17,27 +17,34 @@ class GodInfoContainer extends React.Component<{}, GodInfoContainerState> {
         super();
         this.state = {
             godsList: ['valkyrie', 'einjerhar', 'aesir'],
-            godType: {} as ValhallaBeing
+            godType: {} as Valkyrie | Aesir | Einherjar
         }
     }
     render(): JSX.Element {
         return <CreateGodView
             {...this.state}
-            handleOnDropDownChange={(e: string) => this.handleOnDropDownChange(e)} />;;
+            onSubmit={(e: any) => this.onSubmit(e)}
+            handleOnDropDownChange={(e: string) => this.handleOnDropDownChange(e)} />;
     }
 
+    onSubmit(e: any){
+        e.preventDefault();
+        console.log('SUBMIT', e)
+    }
 
     handleOnDropDownChange(e: string) {
-        console.log('SELECTED: ', e)
+        console.log('SELECTEDzzz: ', e)
         switch (e) {
             case 'valkyrie':
-                this.setState({ godType: {} as Valkyrie})
+                this.setState({ godType: { entity: "valkyrie"} as Valkyrie})
                 console.log('YOU HAVE SELECTED THE VALKYRIE')
                 break;
             case 'aesir':
+                this.setState({ godType: { entity: "aesir"} as Aesir})
                 console.log('YOU HAVE SELECTED THE AESIR')
                 break;
-            case 'einherjar':
+            case 'einjerhar':
+                this.setState({ godType: { entity: "einherjar"} as Einherjar})
                 console.log('YOU HAVE SELECTED THE EINHERJAR')
                 break;
         }

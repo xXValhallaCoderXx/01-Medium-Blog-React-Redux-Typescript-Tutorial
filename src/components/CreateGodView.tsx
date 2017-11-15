@@ -1,15 +1,29 @@
 import React from "react";
 import { NorseGods } from '../models';
 import { GodInfoContainerState } from '../containers/CreateGodContainer';
+import { AesirForm, ValkyrieForm, EinjerharForm } from './Form';
 
 interface GodInfoViewProps {
     handleOnDropDownChange: (e: string) => void;
+    onSubmit: (e: any) => void;
 }
 
 type ComponentProps = GodInfoViewProps & GodInfoContainerState
 
 const CreateGodView = (props: ComponentProps): JSX.Element => {
-    console.log('THE PROPZ', props)
+    console.log('THE PROPZ',props.godType)
+
+    function handleRenderForm(){
+        switch(props.godType.entity){
+            case 'valkyrie':
+                return <ValkyrieForm onSubmit={props.onSubmit} />
+            case 'aesir':
+                return <AesirForm onSubmit={props.onSubmit} />
+            case 'einherjar':
+                return <EinjerharForm onSubmit={props.onSubmit} />
+        }
+    }
+
     return (
         <div>
             <hr />
@@ -20,11 +34,7 @@ const CreateGodView = (props: ComponentProps): JSX.Element => {
                 return <option key={key}>{(key)}</option>
             })}
             </select>
-            <form onSubmit={() => console.log('SUBMIT')}>
-    
-            
-            <button type="submit">Add Norse God</button>
-          </form>
+            {handleRenderForm()}
         </div>
     )
 };
