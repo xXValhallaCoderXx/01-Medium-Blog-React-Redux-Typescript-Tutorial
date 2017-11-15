@@ -36,6 +36,7 @@ class GodInfoContainer extends React.Component<{}, GodInfoContainerState> {
     }
 
     handleInputChange(i: any, e: any){
+        console.log('hmhmh', e.target.value)
         this.setState({
             formValues: {
                 ...this.state.formValues,
