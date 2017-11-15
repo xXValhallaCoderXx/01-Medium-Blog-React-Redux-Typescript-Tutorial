@@ -9,6 +9,7 @@ export type ValhallaBeing = Valkyrie | Aesir | Einherjar;
 export interface GodInfoContainerState {
     godsList: ['valkyrie', 'einjerhar', 'aesir'];
     godType: Valkyrie | Aesir | Einherjar;
+    formValues: string[]
 }
 
 
@@ -17,19 +18,30 @@ class GodInfoContainer extends React.Component<{}, GodInfoContainerState> {
         super();
         this.state = {
             godsList: ['valkyrie', 'einjerhar', 'aesir'],
-            godType: {} as Valkyrie | Aesir | Einherjar
+            godType: {} as Valkyrie | Aesir | Einherjar,
+            formValues: []
         }
     }
     render(): JSX.Element {
         return <CreateGodView
             {...this.state}
+            handleInputChange={(i: any, e: any) => this.handleInputChange(i, e)}
             onSubmit={(e: any) => this.onSubmit(e)}
             handleOnDropDownChange={(e: string) => this.handleOnDropDownChange(e)} />;
     }
 
     onSubmit(e: any){
         e.preventDefault();
-        console.log('SUBMIT', e)
+        console.log('SUBMIT', e.type)
+    }
+
+    handleInputChange(i: any, e: any){
+        this.setState({
+            formValues: {
+                ...this.state.formValues,
+                [i]: e.target.value
+            }
+        })
     }
 
     handleOnDropDownChange(e: string) {

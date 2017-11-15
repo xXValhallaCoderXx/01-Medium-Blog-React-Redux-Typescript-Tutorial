@@ -6,17 +6,17 @@ import { AesirForm, ValkyrieForm, EinjerharForm } from './Form';
 interface GodInfoViewProps {
     handleOnDropDownChange: (e: string) => void;
     onSubmit: (e: any) => void;
+    handleInputChange: (i: any, e: any) => any;
 }
 
 type ComponentProps = GodInfoViewProps & GodInfoContainerState
 
 const CreateGodView = (props: ComponentProps): JSX.Element => {
-    console.log('THE PROPZ',props.godType)
 
     function handleRenderForm(){
         switch(props.godType.entity){
             case 'valkyrie':
-                return <ValkyrieForm onSubmit={props.onSubmit} />
+                return <ValkyrieForm onSubmit={props.onSubmit} handleInputChange={props.handleInputChange} />
             case 'aesir':
                 return <AesirForm onSubmit={props.onSubmit} />
             case 'einherjar':
