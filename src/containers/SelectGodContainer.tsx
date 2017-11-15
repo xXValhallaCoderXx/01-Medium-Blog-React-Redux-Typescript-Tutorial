@@ -13,37 +13,23 @@ export interface GodInfoContainerState {
 
 
 class GodInfoContainer extends React.Component<{}, GodInfoContainerState> {
-<<<<<<< HEAD:src/containers/SelectGodContainer.tsx
     constructor() {
-=======
-    public constructor() {
->>>>>>> a79d8cfff76e86144c487103ad137c696ca8f7af:src/containers/GodInfoContainer.tsx
         super();
         this.state = {
             selectedGod: {},
             godsList: listOfNorseGods
         }
     }
-<<<<<<< HEAD:src/containers/SelectGodContainer.tsx
     render(): JSX.Element {
         return <SelectedGodView
-=======
-    public render() {
-        return <GodInfoView
->>>>>>> a79d8cfff76e86144c487103ad137c696ca8f7af:src/containers/GodInfoContainer.tsx
             {...this.state}
             handleOnDropDownChange={(e: string) => this.handleOnDropDownChange(e)} />;;
     }
 
     handleOnDropDownChange(e: string) {
-<<<<<<< HEAD:src/containers/SelectGodContainer.tsx
         console.log('WHAT IS E', e)
         const value: any = this.state.godsList.filter(item => {
             return item.name == e
-=======
-        const value: any = this.state.godsList.filter(item => {
-            return item.entity == e
->>>>>>> a79d8cfff76e86144c487103ad137c696ca8f7af:src/containers/GodInfoContainer.tsx
         })
 
         this.setState({ selectedGod: value[0] });
