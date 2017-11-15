@@ -13,7 +13,7 @@ type ComponentProps = GodInfoViewProps
 const SelectGodView = (props: ComponentProps): JSX.Element => {
     return (
         <div>
-            <h3>Choose Thy Being Of Valhalla</h3>
+            <h3>Choose Which Being Of Valhalla To View</h3>
             <select onChange={(e) => props.handleOnDropDownChange(e.target.value)}>
             {props.godsList.map((key) => { 
                 return <option key={key.id}>{(key.name)}</option>

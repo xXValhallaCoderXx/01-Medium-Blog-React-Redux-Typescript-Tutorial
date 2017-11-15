@@ -7,8 +7,8 @@ export type ValhallaBeing = Valkyrie | Aesir | Einherjar;
 
 
 export interface GodInfoContainerState {
-    selectedGod: object;
-    godsList: NorseGods[];
+    godsList: ['valkyrie', 'einjerhar', 'aesir'];
+    godType: ValhallaBeing | any;
 }
 
 
@@ -16,8 +16,8 @@ class GodInfoContainer extends React.Component<{}, GodInfoContainerState> {
     constructor() {
         super();
         this.state = {
-            selectedGod: {},
-            godsList: listOfNorseGods
+            godsList: ['valkyrie', 'einjerhar', 'aesir'],
+            godType: {} as ValhallaBeing
         }
     }
     render(): JSX.Element {
@@ -26,28 +26,23 @@ class GodInfoContainer extends React.Component<{}, GodInfoContainerState> {
             handleOnDropDownChange={(e: string) => this.handleOnDropDownChange(e)} />;;
     }
 
+
     handleOnDropDownChange(e: string) {
-        const value: any = this.state.godsList.filter(item => {
-            return item.entity == e
-        })
-
-        this.setState({ selectedGod: value[0] });
-        this.selectedBeing(value[0]);
-    }
-
-    selectedBeing(norseGod: ValhallaBeing) {
-        switch (norseGod.entity) {
+        console.log('SELECTED: ', e)
+        switch (e) {
             case 'valkyrie':
-                console.log('YOU HAVE SELECTED THE VALKYRIE', norseGod)
+                this.setState({ godType: {} as Valkyrie})
+                console.log('YOU HAVE SELECTED THE VALKYRIE')
                 break;
             case 'aesir':
-                console.log('YOU HAVE SELECTED THE AESIR', norseGod)
+                console.log('YOU HAVE SELECTED THE AESIR')
                 break;
             case 'einherjar':
-                console.log('YOU HAVE SELECTED THE EINHERJAR', norseGod)
+                console.log('YOU HAVE SELECTED THE EINHERJAR')
                 break;
         }
     }
+
 };
 
 export default GodInfoContainer;
