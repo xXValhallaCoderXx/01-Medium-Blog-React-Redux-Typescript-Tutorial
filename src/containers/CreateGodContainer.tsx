@@ -33,9 +33,22 @@ class GodInfoContainer extends React.Component<{}, GodInfoContainerState> {
 
     onSubmit(e: any){
         e.preventDefault();
+        console.log('SUBMIT')
         switch(this.state.godType.entity){
             case 'valkyrie':
-        
+                console.log('HITTING HERE')
+                this.setState({
+                    godType: {
+                        id: Math.floor(Math.random() * 1000) + 1,
+                        entity: "valkyrie",
+                        saved: 100,
+                        name: "test"
+                    }
+                }, () => {
+                    listOfNorseGods.push(this.state.godType);
+                    console.log('ADDED ', listOfNorseGods)
+                });
+
                 break;
             case 'aesir':
                 break;
@@ -43,12 +56,9 @@ class GodInfoContainer extends React.Component<{}, GodInfoContainerState> {
                 break;
 
         }
-        console.log('SUBMIT', e.type)
-        //listOfNorseGods.push(this.state.formValues);
     }
 
     handleInputChange(e: any){
-        console.log('hmhmh', e.target.value)
         this.setState({
             formValues: {
                 ...this.state.formValues,
@@ -58,7 +68,6 @@ class GodInfoContainer extends React.Component<{}, GodInfoContainerState> {
     }
 
     handleOnDropDownChange(e: string) {
-        console.log('SELECTEDzzz: ', e)
         switch (e) {
             case 'valkyrie':
                 this.setState({ godType: { entity: "valkyrie"} as Valkyrie})

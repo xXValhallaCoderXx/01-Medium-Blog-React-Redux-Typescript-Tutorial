@@ -11,6 +11,7 @@ interface GodInfoViewProps {
 type ComponentProps = GodInfoViewProps
 
 const SelectGodView = (props: ComponentProps): JSX.Element => {
+    console.log('SEELCTED GOD PROSP: ', props.godsList)
     return (
         <div>
             <h3>Choose Which Being Of Valhalla To View</h3>

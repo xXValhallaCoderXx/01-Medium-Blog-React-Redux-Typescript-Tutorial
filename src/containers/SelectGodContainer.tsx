@@ -27,7 +27,6 @@ class GodInfoContainer extends React.Component<{}, GodInfoContainerState> {
     }
 
     handleOnDropDownChange(e: string) {
-        console.log('WHAT IS E', e)
         const value: any = this.state.godsList.filter(item => {
             return item.name == e
         })

@@ -30,7 +30,6 @@ const CreateGodView = (props: ComponentProps): JSX.Element => {
             <h3>Choose Which Being To Send To Valhalla</h3>
             <select onChange={(e) => props.handleOnDropDownChange(e.target.value)}>
             {props.godsList.map((key) => {
-                console.log('WHAT', key)
                 return <option key={key}>{(key)}</option>
             })}
             </select>

@@ -11,6 +11,7 @@ const Valkyrie = (props: ComponentProps): JSX.Element => {
             <label>Name: </label>
             <input type="text" name="Name" placeholder="Enter Valkyrie name..." onChange={(e: React.SyntheticEvent<EventTarget>) => props.handleInputChange(e)} />
             <input type="number" name="Saved" placeholder="Enter Saved..." onChange={(e: React.SyntheticEvent<EventTarget>) => props.handleInputChange(e)} />
+            <button type="submit">Submit</button>
         </form>
     );
 };
