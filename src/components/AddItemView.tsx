@@ -1,6 +1,6 @@
 import React from "react";
 import { NorseGods } from '../models';
-import { GodInfoContainerState } from '../containers/CreateGodContainer';
+import { GodInfoContainerState } from '../containers/AddItemContainer';
 import { AesirForm, ValkyrieForm, EinjerharForm } from './Form';
 
 interface GodInfoViewProps {
@@ -12,7 +12,7 @@ interface GodInfoViewProps {
 type ComponentProps = GodInfoViewProps & GodInfoContainerState
 
 const CreateGodView = (props: ComponentProps): JSX.Element => {
-
+    console.log('THESE ARE THE PROPS', props)
     function handleRenderForm(){
         switch(props.godType.entity){
             case 'valkyrie':
@@ -29,7 +29,7 @@ const CreateGodView = (props: ComponentProps): JSX.Element => {
             <hr />
             <h3>Choose Which Being To Send To Valhalla</h3>
             <select onChange={(e) => props.handleOnDropDownChange(e.target.value)}>
-            {props.godsList.map((key) => {
+            {props.godTypesList.map((key) => {
                 return <option key={key}>{(key)}</option>
             })}
             </select>

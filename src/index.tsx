@@ -1,14 +1,12 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import CounterContainer from './containers/CounterContainer';
-import SelectedGodContainer from './containers/SelectGodContainer';
-import CreateGodContainer from './containers/CreateGodContainer';
+import AddItemContainer from './containers/AddItemContainer';
 import './assets/styles/main.css';
 
 ReactDOM.render(
   <div>
     <CounterContainer />
-    <SelectedGodContainer />
-    <CreateGodContainer />
+    <AddItemContainer />
   </div>, document.getElementById("render-app")
 );
