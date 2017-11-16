@@ -9,6 +9,8 @@ interface GodInfoViewProps {
     handleInputChange: (e: any) => void;
 }
 
+// Use the 'Intersection' Operator to co-join 2 interfaces into one
+// This allows us to keep our Componennt instantiation cleaner
 type ComponentProps = GodInfoViewProps & GodInfoContainerState
 
 const CreateGodView = (props: ComponentProps): JSX.Element => {
@@ -20,12 +22,14 @@ const CreateGodView = (props: ComponentProps): JSX.Element => {
             <select onChange={(e) => props.handleOnDropDownChange(e.target.value)}>
             <option>Select Deity...</option>
             {props.deityChoice.map((key) => {
-                return <option key={key}>{(key)}</option>
+                // Create option drop down for each Deity type
+                return <option key={key}>{key}</option>
             })}
             </select>
             <br />
             <div className="form-wrapper">
             {Object.keys(props.deity).length === 0
+            // If deity has been selected display form
             ? null
             : <AddItemForm 
                 onSubmit={props.onSubmit}
