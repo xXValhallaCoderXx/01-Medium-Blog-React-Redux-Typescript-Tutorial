@@ -6,7 +6,7 @@ import { AesirForm, ValkyrieForm, EinjerharForm } from './Form';
 interface GodInfoViewProps {
     handleOnDropDownChange: (e: string) => void;
     onSubmit: (e: any) => void;
-    handleInputChange: (i: any, e: any) => any;
+    handleInputChange: (e: any) => void;
 }
 
 type ComponentProps = GodInfoViewProps & GodInfoContainerState

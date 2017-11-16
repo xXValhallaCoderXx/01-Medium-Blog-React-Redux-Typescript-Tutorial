@@ -23,24 +23,36 @@ class GodInfoContainer extends React.Component<{}, GodInfoContainerState> {
         }
     }
     render(): JSX.Element {
+        console.log('THJE STATE', this.state)
         return <CreateGodView
             {...this.state}
-            handleInputChange={(i: any, e: any) => this.handleInputChange(i, e)}
+            handleInputChange={(e: any) => this.handleInputChange(e)}
             onSubmit={(e: any) => this.onSubmit(e)}
             handleOnDropDownChange={(e: string) => this.handleOnDropDownChange(e)} />;
     }
 
     onSubmit(e: any){
         e.preventDefault();
+        switch(this.state.godType.entity){
+            case 'valkyrie':
+        
+                break;
+            case 'aesir':
+                break;
+            case 'einherjar':
+                break;
+
+        }
         console.log('SUBMIT', e.type)
+        //listOfNorseGods.push(this.state.formValues);
     }
 
-    handleInputChange(i: any, e: any){
+    handleInputChange(e: any){
         console.log('hmhmh', e.target.value)
         this.setState({
             formValues: {
                 ...this.state.formValues,
-                [i]: e.target.value
+                [e.target.name]: e.target.value
             }
         })
     }
