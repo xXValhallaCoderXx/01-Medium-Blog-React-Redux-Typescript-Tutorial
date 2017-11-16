@@ -1,9 +1,9 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import { Counter } from './components/Counter';
+import CounterContainer from './containers/CounterContainer';
 import './assets/styles/main.css';
 
 ReactDOM.render(
-  <Counter />,
+  <CounterContainer />,
     document.getElementById("render-app")
 );
