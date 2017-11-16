@@ -1,5 +1,5 @@
 import React from "react";
-import { NorseGods } from '../models';
+import { Deity } from '../models';
 import { GodInfoContainerState } from '../containers/AddItemContainer';
 import AddItemForm from './AddItemForm';
 
@@ -19,18 +19,18 @@ const CreateGodView = (props: ComponentProps): JSX.Element => {
             <label>Choose Deity Type: </label>
             <select onChange={(e) => props.handleOnDropDownChange(e.target.value)}>
             <option>Select Deity...</option>
-            {props.godTypesList.map((key) => {
+            {props.deityChoice.map((key) => {
                 return <option key={key}>{(key)}</option>
             })}
             </select>
             <br />
             <div className="form-wrapper">
-            {Object.keys(props.godType).length === 0
+            {Object.keys(props.deity).length === 0
             ? null
             : <AddItemForm 
                 onSubmit={props.onSubmit}
                 handleInputChange={props.handleInputChange} 
-                godType={props.godType.entity} 
+                godType={props.deity.entity} 
             />}
             </div>
         </div>

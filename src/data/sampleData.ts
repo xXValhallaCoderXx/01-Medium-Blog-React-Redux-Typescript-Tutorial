@@ -1,7 +1,7 @@
 import { Valkyrie, Aesir, Einherjar } from '../models';
 
-
-// Note How they all have the properties of 'NorseGodType' interface
+// Note How they all have the properties of 'Deity' interface.
+// They all inherit from Deity interface
 
 export const sampleValk: Valkyrie = {
     id: 1,
@@ -25,7 +25,8 @@ export const sampleEinherjar: Einherjar = {
     slain: 100
 };
 
-export const listOfNorseGods = [
+// Creating a list of sample data for Application
+export const deities = [
     sampleValk,
     sampleAesir,
     sampleEinherjar

@@ -1,16 +1,17 @@
 import React, { Component } from 'react';
 import AddItemView from '../components/AddItemView'
-import { Valkyrie, Aesir, Einherjar, NorseGods } from '../models';
-import { listOfNorseGods } from '../data/sampleData';
+import { Valkyrie, Aesir, Einherjar, Deity } from '../models';
+import { deities } from '../data/sampleData';
 
-export type ValhallaBeing = Valkyrie | Aesir | Einherjar;
+// Make use of the TS 'Union Type' this allows DeityType to be Valkyire, Aesir or Einherjar
+export type DeityType = Valkyrie | Aesir | Einherjar;
 
 
 export interface GodInfoContainerState {
-    addedGodsList: NorseGods[]
-    godTypesList: ['valkyrie', 'einjerhar', 'aesir'];
-    godType: Valkyrie | Aesir | Einherjar;
-    formValues: string[] | any
+    totalDeities: Deity[] // List of all deities added
+    deityChoice: ['valkyrie', 'einjerhar', 'aesir']; // Choice options we have
+    deity: Valkyrie | Aesir | Einherjar; // Defining a model for what properties a deity will have
+    formValues: string[] | any // Expecting an array of String, since the properties are unknown added 'any' as union type
 }
 
 
@@ -18,10 +19,10 @@ class AddItemContainer extends React.Component<{}, GodInfoContainerState> {
     constructor() {
         super();
         this.state = {
-            godTypesList: ['valkyrie', 'einjerhar', 'aesir'],
-            godType: {} as Valkyrie | Aesir | Einherjar,
+            deityChoice: ['valkyrie', 'einjerhar', 'aesir'],
+            deity: {} as Valkyrie | Aesir | Einherjar, // Instiate as an empty object - with type of Valkyrie, Aesir or Einherjar
             formValues: [],
-            addedGodsList: listOfNorseGods
+            totalDeities: deities // Populate totalDeities with our sample data
         }
     }
     render(): JSX.Element {
@@ -29,46 +30,25 @@ class AddItemContainer extends React.Component<{}, GodInfoContainerState> {
             {...this.state}
             handleInputChange={(e: any) => this.handleInputChange(e)}
             onSubmit={(e: any) => this.onSubmit(e)}
-            handleOnDropDownChange={(e: string) => this.handleOnDropDownChange(e)} />;
+            handleOnDropDownChange={(deityType: string) => this.handleOnDropDownChange(deityType)} />;
     }
 
-    onSubmit(e: any){
-        e.preventDefault();
-        switch(this.state.godType.entity){
+    handleOnDropDownChange(deityType: string) {
+        // On dropdown - We set deity as a specific Type of Valkyrie, Aesir or Einherjar
+        switch (deityType) {
             case 'valkyrie':
-                this.setState({
-                    godType: {
-                        id: Math.floor(Math.random() * 1000) + 1,
-                        entity: this.state.godType.entity,
-                        saved: this.state.formValues.saved,
-                        name: this.state.formValues.godName
-                    }
-                }, () => listOfNorseGods.push(this.state.godType));
+                this.setState({ deity: { entity: "valkyrie"} as Valkyrie})
                 break;
             case 'aesir':
-                this.setState({
-                    godType: {
-                        id: Math.floor(Math.random() * 1000) + 1,
-                        entity: this.state.godType.entity,
-                        protected: this.state.formValues.protected,
-                        name: this.state.formValues.godName
-                    }
-                }, () => listOfNorseGods.push(this.state.godType));
+                this.setState({ deity: { entity: "aesir"} as Aesir})
                 break;
-            case 'einherjar':
-                this.setState({
-                    godType: {
-                        id: Math.floor(Math.random() * 1000) + 1,
-                        entity: this.state.godType.entity,
-                        slain: this.state.formValues.slain,
-                        name: this.state.formValues.godName
-                    }
-                }, () => listOfNorseGods.push(this.state.godType));
+            case 'einjerhar':
+                this.setState({ deity: { entity: "einherjar"} as Einherjar})
                 break;
         }
-        this.setState({ formValues: []})
     }
 
+    // On Inpute change, depending on which Input Element is changed we will add it to the form values array
     handleInputChange(e: any){
         this.setState({
             formValues: {
@@ -78,20 +58,43 @@ class AddItemContainer extends React.Component<{}, GodInfoContainerState> {
         })
     }
 
-    handleOnDropDownChange(e: string) {
-        switch (e) {
+    // On form submit - Depen
+    onSubmit(e: any){
+        e.preventDefault();
+        switch(this.state.deity.entity){
             case 'valkyrie':
-                this.setState({ godType: { entity: "valkyrie"} as Valkyrie})
+                this.setState({
+                    deity: {
+                        id: Math.floor(Math.random() * 1000) + 1,
+                        entity: this.state.deity.entity,
+                        saved: this.state.formValues.saved,
+                        name: this.state.formValues.godName
+                    }
+                }, () => deities.push(this.state.deity));
                 break;
             case 'aesir':
-                this.setState({ godType: { entity: "aesir"} as Aesir})
+                this.setState({
+                    deity: {
+                        id: Math.floor(Math.random() * 1000) + 1,
+                        entity: this.state.deity.entity,
+                        protected: this.state.formValues.protected,
+                        name: this.state.formValues.godName
+                    }
+                }, () => deities.push(this.state.deity));
                 break;
-            case 'einjerhar':
-                this.setState({ godType: { entity: "einherjar"} as Einherjar})
+            case 'einherjar':
+                this.setState({
+                    deity: {
+                        id: Math.floor(Math.random() * 1000) + 1,
+                        entity: this.state.deity.entity,
+                        slain: this.state.formValues.slain,
+                        name: this.state.formValues.godName
+                    }
+                }, () => deities.push(this.state.deity));
                 break;
         }
+        this.setState({ formValues: []})
     }
-
 };
 
 export default AddItemContainer;
