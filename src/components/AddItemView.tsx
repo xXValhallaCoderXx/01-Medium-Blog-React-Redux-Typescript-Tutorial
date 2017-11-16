@@ -1,7 +1,7 @@
 import React from "react";
 import { NorseGods } from '../models';
 import { GodInfoContainerState } from '../containers/AddItemContainer';
-import { AesirForm, ValkyrieForm, EinjerharForm } from './Form';
+import AddItemForm from './AddItemForm';
 
 interface GodInfoViewProps {
     handleOnDropDownChange: (e: string) => void;
@@ -12,28 +12,27 @@ interface GodInfoViewProps {
 type ComponentProps = GodInfoViewProps & GodInfoContainerState
 
 const CreateGodView = (props: ComponentProps): JSX.Element => {
-    console.log('THESE ARE THE PROPS', props)
-    function handleRenderForm(){
-        switch(props.godType.entity){
-            case 'valkyrie':
-                return <ValkyrieForm onSubmit={props.onSubmit} handleInputChange={props.handleInputChange} />
-            case 'aesir':
-                return <AesirForm onSubmit={props.onSubmit} />
-            case 'einherjar':
-                return <EinjerharForm onSubmit={props.onSubmit} />
-        }
-    }
-
+    console.log('PROPS', props)
     return (
         <div>
-            <hr />
             <h3>Choose Which Being To Send To Valhalla</h3>
+            <label>Choose Deity Type: </label>
             <select onChange={(e) => props.handleOnDropDownChange(e.target.value)}>
+            <option>Select Deity...</option>
             {props.godTypesList.map((key) => {
                 return <option key={key}>{(key)}</option>
             })}
             </select>
-            {handleRenderForm()}
+            <br />
+            <div className="form-wrapper">
+            {Object.keys(props.godType).length === 0
+            ? null
+            : <AddItemForm 
+                onSubmit={props.onSubmit}
+                handleInputChange={props.handleInputChange} 
+                godType={props.godType.entity} 
+            />}
+            </div>
         </div>
     )
 };
