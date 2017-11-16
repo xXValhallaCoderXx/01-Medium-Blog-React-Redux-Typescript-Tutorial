@@ -40,8 +40,8 @@ class AddItemContainer extends React.Component<{}, GodInfoContainerState> {
                     godType: {
                         id: Math.floor(Math.random() * 1000) + 1,
                         entity: this.state.godType.entity,
-                        saved: this.state.formValues.Saved,
-                        name: this.state.formValues.Name
+                        saved: this.state.formValues.saved,
+                        name: this.state.formValues.godName
                     }
                 }, () => listOfNorseGods.push(this.state.godType));
                 break;
@@ -50,8 +50,8 @@ class AddItemContainer extends React.Component<{}, GodInfoContainerState> {
                     godType: {
                         id: Math.floor(Math.random() * 1000) + 1,
                         entity: this.state.godType.entity,
-                        protected: this.state.formValues.Saved,
-                        name: this.state.formValues.Name
+                        protected: this.state.formValues.protected,
+                        name: this.state.formValues.godName
                     }
                 }, () => listOfNorseGods.push(this.state.godType));
                 break;
@@ -60,12 +60,13 @@ class AddItemContainer extends React.Component<{}, GodInfoContainerState> {
                     godType: {
                         id: Math.floor(Math.random() * 1000) + 1,
                         entity: this.state.godType.entity,
-                        slain: this.state.formValues.Saved,
-                        name: this.state.formValues.Name
+                        slain: this.state.formValues.slain,
+                        name: this.state.formValues.godName
                     }
                 }, () => listOfNorseGods.push(this.state.godType));
                 break;
         }
+        this.setState({ formValues: []})
     }
 
     handleInputChange(e: any){

@@ -20,10 +20,17 @@ const TestForm = (props: ComponentProps): JSX.Element => {
     return (
         <form onSubmit={props.onSubmit}>
             <label>Name: </label>
-            <input type="text" name="name" placeholder="Enter name..." onChange={(e: React.SyntheticEvent<EventTarget>) => props.handleInputChange(e)} />
+            <input 
+                type="text" 
+                name="godName" 
+                placeholder="Enter name..." 
+                onChange={(e: React.SyntheticEvent<EventTarget>) => props.handleInputChange(e)} />
             <br />
-            <label>{handleInputName()}</label>
-            <input type="number" name={handleInputName()} placeholder="Enter value..." onChange={(e: React.SyntheticEvent<EventTarget>) => props.handleInputChange(e)} />
+            <label>{handleInputName()}: </label>
+            <input 
+                type="number" name={handleInputName()} 
+                placeholder="Enter value..." 
+                onChange={(e: React.SyntheticEvent<EventTarget>) => props.handleInputChange(e)} />
             <button type="submit">Submit</button>
         </form>
     );
