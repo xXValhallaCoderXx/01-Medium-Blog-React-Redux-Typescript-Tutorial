@@ -30,7 +30,7 @@ const CreateGodView = (props: ComponentProps): JSX.Element => {
             : <AddItemForm 
                 onSubmit={props.onSubmit}
                 handleInputChange={props.handleInputChange} 
-                godType={props.deity.entity} 
+                deityType={props.deity.entity} 
             />}
             </div>
         </div>

@@ -58,7 +58,7 @@ class AddItemContainer extends React.Component<{}, GodInfoContainerState> {
         })
     }
 
-    // On form submit - Depen
+    // On form submit - Depening in Deity type - Add values to state then insert in our array of deities
     onSubmit(e: any){
         e.preventDefault();
         switch(this.state.deity.entity){

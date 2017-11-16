@@ -3,12 +3,12 @@ import React from "react";
 interface ComponentProps {
     onSubmit: (e: any) => void;
     handleInputChange: (e: React.SyntheticEvent<EventTarget>) => void;
-    godType: string;
+    deityType: string;
 }
 
 const TestForm = (props: ComponentProps): JSX.Element => {
     function handleInputName(){
-        switch(props.godType){
+        switch(props.deityType){
             case 'aesir':
                 return "protected"
             case 'valkyrie':
