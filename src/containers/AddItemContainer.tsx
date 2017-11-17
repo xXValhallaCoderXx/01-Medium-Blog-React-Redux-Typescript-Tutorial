@@ -118,6 +118,23 @@ class AddItemContainer extends React.Component<{}, GodInfoContainerState> {
                 break;
         }
     }
+
+    // This Function does not do anything, but I  wanted to display another use for types
+    selectedBeing(deity: DeityType) {
+        // Since we have defined what kind of deities we can have
+        // If we type a case for something other than we have define we will get an error
+        switch (deity.entity) {
+            case 'valkyrie':
+                console.log('YOU HAVE SELECTED THE VALKYRIE')
+                break;
+            case 'aesir':
+                console.log('YOU HAVE SELECTED THE AESIR')
+                break;
+            case 'einherjar':
+                console.log('YOU HAVE SELECTED THE EINHERJAR')
+                break;
+        }
+    }
 };
 
 export default AddItemContainer;
