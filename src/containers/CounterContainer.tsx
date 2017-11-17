@@ -55,4 +55,3 @@ class CounterContainer extends React.Component<{}, CounterContainerState> {
 };
 
 export default CounterContainer;
-

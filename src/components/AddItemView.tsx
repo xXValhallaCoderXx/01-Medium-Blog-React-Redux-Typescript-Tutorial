@@ -14,7 +14,6 @@ interface GodInfoViewProps {
 type ComponentProps = GodInfoViewProps & GodInfoContainerState
 
 const CreateGodView = (props: ComponentProps): JSX.Element => {
-    console.log('PROPS', props)
     return (
         <div>
             <h3>Choose Which Being To Send To Valhalla</h3>

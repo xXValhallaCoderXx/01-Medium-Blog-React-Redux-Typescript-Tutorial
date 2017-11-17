@@ -26,6 +26,7 @@ class AddItemContainer extends React.Component<{}, GodInfoContainerState> {
         }
     }
     render(): JSX.Element {
+        console.log('TOTAL DEITIES: ', deities);
         return <AddItemView 
             {...this.state}
             handleInputChange={(e: any) => this.handleInputChange(e)}
@@ -92,8 +93,7 @@ class AddItemContainer extends React.Component<{}, GodInfoContainerState> {
                     }
                 }, () => deities.push(this.state.deity));
                 break;
-        }
-        this.setState({ formValues: []})
+        }       
     }
 
     // This Function does not do anything, but I  wanted to display another use for types

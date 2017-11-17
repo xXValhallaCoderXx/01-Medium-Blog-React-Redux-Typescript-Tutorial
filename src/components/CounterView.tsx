@@ -1,14 +1,18 @@
 import React from "react";
 import { CounterContainerState } from '../containers/CounterContainer';
 
-// Define our Functions passwed down
+// Define our Functions passed down
 interface CounterViewProps {
     handleDecrease: () => void;
     handleIncrease: (num: number) => void; //Define a function expecting a parameter
     handleDisplayError: () => void;
 }
 
+// Here is our first use of the 'type alias' and the 'Intersection types (&)' 
 type ComponentProps = CounterContainerState & CounterViewProps
+
+// Another way we can do this is by using Interface again
+//interface ComponentProps extends CounterContainerState, CounterViewProps {}
 
 const CounterView = (props: ComponentProps): JSX.Element => {
     return (

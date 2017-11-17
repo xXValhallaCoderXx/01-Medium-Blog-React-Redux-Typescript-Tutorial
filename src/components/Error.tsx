@@ -1,7 +1,9 @@
 import React from "react";
 
-export default (): JSX.Element => (
+const ErrorMessage = (): JSX.Element => (
     <div>
         <p>One can not drink, if thy have no Ale!</p>
     </div>
 );
+
+export default ErrorMessage;
