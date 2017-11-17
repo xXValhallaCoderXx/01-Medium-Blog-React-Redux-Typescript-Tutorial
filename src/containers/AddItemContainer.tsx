@@ -26,7 +26,6 @@ class AddItemContainer extends React.Component<{}, GodInfoContainerState> {
         }
     }
     render(): JSX.Element {
-        console.log('TOTAL DEITIES: ', deities);
         return <AddItemView 
             {...this.state}
             handleInputChange={(e: any) => this.handleInputChange(e)}
@@ -70,8 +69,11 @@ class AddItemContainer extends React.Component<{}, GodInfoContainerState> {
                         entity: this.state.deity.entity,
                         saved: this.state.formValues.saved,
                         name: this.state.formValues.godName
-                    }
-                }, () => deities.push(this.state.deity));
+                    },
+                    
+                }, () => this.setState({
+                    totalDeities: [...this.state.totalDeities, this.state.deity]
+                }));
                 break;
             case 'aesir':
                 this.setState({
@@ -81,7 +83,9 @@ class AddItemContainer extends React.Component<{}, GodInfoContainerState> {
                         protected: this.state.formValues.protected,
                         name: this.state.formValues.godName
                     }
-                }, () => deities.push(this.state.deity));
+                }, () => this.setState({
+                    totalDeities: [...this.state.totalDeities, this.state.deity]
+                }));
                 break;
             case 'einherjar':
                 this.setState({
@@ -91,7 +95,9 @@ class AddItemContainer extends React.Component<{}, GodInfoContainerState> {
                         slain: this.state.formValues.slain,
                         name: this.state.formValues.godName
                     }
-                }, () => deities.push(this.state.deity));
+                }, () => this.setState({
+                    totalDeities: [...this.state.totalDeities, this.state.deity]
+                }));
                 break;
         }       
     }

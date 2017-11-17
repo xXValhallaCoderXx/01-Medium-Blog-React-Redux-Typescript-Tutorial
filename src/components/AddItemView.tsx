@@ -14,6 +14,7 @@ interface GodInfoViewProps {
 type ComponentProps = GodInfoViewProps & GodInfoContainerState
 
 const CreateGodView = (props: ComponentProps): JSX.Element => {
+    console.log('LIST OF DEITIES: ', props.totalDeities)
     return (
         <div>
             <h3>Choose Which Being To Send To Valhalla</h3>
@@ -36,6 +37,13 @@ const CreateGodView = (props: ComponentProps): JSX.Element => {
                 deityType={props.deity.entity} 
             />}
             </div>
+            <hr />
+            <h3>Added Deities</h3>
+            <ul>
+            {props.totalDeities.map((key) => {
+                 return <li key={key.id}>{key.name} is a {key.entity}</li>               
+            })}
+            </ul>
         </div>
     )
 };
