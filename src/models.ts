@@ -4,7 +4,7 @@ export interface Deity {
     readonly id: number; // Readonly - This can not be reassigned in future
     name: string;
     entity: string;
-    optional?: string // Notice the ? - This means Its not required
+    height?: string // Notice the ? - This means Its not required
 }
 
 // Interfaces can also Extend (Inherit) from Others

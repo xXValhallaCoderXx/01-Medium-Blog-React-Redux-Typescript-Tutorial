@@ -8,7 +8,7 @@ export const sampleValk: Valkyrie = {
     name: "Herja",
     entity: "valkyrie",
     saved: 100,
-    optional: "This is not needed"
+    height: "This is not needed"
 };
 
 export const sampleAesir: Aesir = {
