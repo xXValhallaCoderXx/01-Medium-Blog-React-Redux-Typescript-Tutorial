@@ -8,6 +8,7 @@ interface ComponentProps {
 
 const TestForm = (props: ComponentProps): JSX.Element => {
     function handleInputName(){
+        // Depeing on selected deity type - dynamically name Input
         switch(props.deityType){
             case 'aesir':
                 return "protected"
@@ -31,6 +32,7 @@ const TestForm = (props: ComponentProps): JSX.Element => {
                 type="number" name={handleInputName()} 
                 placeholder="Enter value..." 
                 onChange={(e: React.SyntheticEvent<EventTarget>) => props.handleInputChange(e)} />
+            <br/>
             <button type="submit">Submit</button>
         </form>
     );

@@ -21,14 +21,14 @@ class CounterContainer extends React.Component<{}, CounterContainerState> {
         return <CounterView
             {...this.state}
             handleDisplayError={() => this.handleDisplayError()}
-            handleIncrease={() => this.handleIncrease()}
+            handleIncrease={(num) => this.handleIncrease(num)}
             handleDecrease={() => this.handleDecrease()} />;
     };
 
-    handleIncrease() {
+    handleIncrease(num: number) {
         const { value } = this.state;
         this.setState({
-            value: value + 1,
+            value: value + num,
             error: false,
         });
     };
@@ -36,7 +36,6 @@ class CounterContainer extends React.Component<{}, CounterContainerState> {
     handleDecrease() {
         const { value } = this.state;
         if (value === 0) {
-            // If Counter Is 0, Set False to display a message to user
             this.setState({ error: true })
             return null;
         };

@@ -1,9 +1,10 @@
 import React from "react";
 import { CounterContainerState } from '../containers/CounterContainer';
 
+// Define our Functions passwed down
 interface CounterViewProps {
     handleDecrease: () => void;
-    handleIncrease: () => void;
+    handleIncrease: (num: number) => void; //Define a function expecting a parameter
     handleDisplayError: () => void;
 }
 
@@ -17,7 +18,7 @@ const CounterView = (props: ComponentProps): JSX.Element => {
             <hr />
             <div className="basic-padding">
                 <label>Increase: </label>
-                <button onClick={() => props.handleIncrease()}>+</button>
+                <button onClick={() => props.handleIncrease(1)}>+</button>
             </div>
             <br />
             <div className="basic-padding">
