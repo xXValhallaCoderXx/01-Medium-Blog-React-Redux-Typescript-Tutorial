@@ -37,13 +37,16 @@ class AddItemContainer extends React.Component<{}, GodInfoContainerState> {
         // On dropdown - We set deity as a specific Type of Valkyrie, Aesir or Einherjar
         switch (deityType) {
             case 'valkyrie':
-                this.setState({ deity: { entity: "valkyrie"} as Valkyrie})
+                this.setState({ deity: { entity: "valkyrie"} as Valkyrie},
+                () => this.selectedBeing(this.state.deity)); // This does nothing - Added to demonstrate TS Feature
                 break;
             case 'aesir':
-                this.setState({ deity: { entity: "aesir"} as Aesir})
+                this.setState({ deity: { entity: "aesir"} as Aesir},
+                () => this.selectedBeing(this.state.deity)); // This does nothing - Added to demonstrate TS Feature
                 break;
             case 'einjerhar':
-                this.setState({ deity: { entity: "einherjar"} as Einherjar})
+                this.setState({ deity: { entity: "einherjar"} as Einherjar},
+                () => this.selectedBeing(this.state.deity)); // This does nothing - Added to demonstrate TS Feature
                 break;
         }
     }
