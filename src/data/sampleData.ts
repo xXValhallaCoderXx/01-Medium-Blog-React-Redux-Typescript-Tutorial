@@ -7,7 +7,7 @@ export const sampleValk: Valkyrie = { // Adding the Valkyrie type to sampleValk
     name: "Herja",
     entity: "valkyrie",
     saved: 100,
-    height: "This is not needed"
+    height: 189
 };
 
 export const sampleAesir: Aesir = { // Adding the Aesir type to sampleAesir
