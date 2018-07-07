@@ -5,6 +5,7 @@ const webpack = require('webpack');
 module.exports = {
     // Entr point of our application
     entry: "./src/index.tsx",
+    mode: "development",
     // Output directory of out built files 
     output: {
         filename: "bundle.js",
